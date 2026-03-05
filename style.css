@@ -314,10 +314,14 @@ footer {
     .hero { min-height: auto; padding: 160px 0 100px; }
     h1 { font-size: 48px; letter-spacing: -0.02em; }
     .subtitle { font-size: 18px; margin-top: var(--space-sm); }
-    .grid { grid-template-columns: 1fr; text-align: center; gap: var(--space-lg); }
+    
+    /* Force consistent stacking order on mobile: Visual Top, Content Bottom */
+    .grid { display: flex; flex-direction: column; text-align: center; gap: var(--space-lg); }
+    .content { order: 2; }
+    .visual { order: 1; height: 240px; width: 100%; }
+    
     .product-section { padding: 100px 0; }
     .product-label { margin-left: auto; margin-right: auto; }
-    .visual { height: 240px; }
     .oria-shape { width: 120px; height: 120px; }
     .lamina-shape span { width: 90px; gap: 12px; }
     .keepass-shape { width: 70px; height: 70px; }
