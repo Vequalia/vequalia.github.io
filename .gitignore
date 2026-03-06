@@ -1,0 +1,15 @@
+# Brand Philosophy & AI Mandates
+GEMINI.md
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environment
+.env
