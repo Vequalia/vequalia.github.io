@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="glow" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2997ff" />
-      <stop offset="100%" stop-color="#ffffff" />
+    <linearGradient id="darkGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1B1F2B" />
+      <stop offset="100%" stop-color="#3E465E" />
     </linearGradient>
   </defs>
   
-  <!-- Deep Background -->
-  <rect width="100" height="100" rx="24" fill="#1b1f2b"/>
+  <!-- Humanistic Starlight/Off-white Background -->
+  <rect width="100" height="100" rx="24" fill="#FAF9F6"/>
 
-  <!-- The Ascending 'A' (IA) filling the container -->
-  <path d="M 24 76 L 50 24 L 76 76" fill="none" stroke="url(#glow)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- The Ascending 'A' (IA) filling the container with deep brand gradient -->
+  <path d="M 24 76 L 50 24 L 76 76" fill="none" stroke="url(#darkGlow)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

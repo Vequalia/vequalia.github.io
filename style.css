@@ -354,7 +354,7 @@ footer {
     .visual { order: 1; height: 240px; width: 100%; }
     
     .product-section { padding: 100px 0; }
-    .section-watermark { font-size: 200px; top: 10%; transform: none; left: 50% !important; transform: translateX(-50%); opacity: 0.03; }
+    .section-watermark { font-size: 200px; top: 65%; left: 50% !important; transform: translate(-50%, -50%); opacity: 0.03; }
     .product-label { margin-left: auto; margin-right: auto; margin-bottom: var(--space-sm); }
     .accent-line { margin-bottom: var(--space-sm); }
     .oria-shape { width: 120px; height: 120px; }
