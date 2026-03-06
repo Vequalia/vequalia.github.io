@@ -196,10 +196,33 @@ h1 {
 /* Product Sections */
 .product-section {
     padding: var(--space-xxl) 0;
+    position: relative;
+    overflow: hidden; /* Contains the watermark */
 }
 
 .product-section.alternate {
     background-color: var(--bg-alt);
+}
+
+.section-watermark {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    font-size: 400px;
+    font-weight: 600;
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    opacity: 0.02;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+.product-section.alternate .section-watermark {
+    left: auto;
+    right: 5%;
 }
 
 .grid {
@@ -207,6 +230,8 @@ h1 {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: var(--space-xl);
+    position: relative;
+    z-index: 1; /* Keep content above watermark */
 }
 
 .product-label {
@@ -216,8 +241,16 @@ h1 {
     line-height: 1.5;
     color: var(--text-secondary);
     display: block;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
     max-width: 340px;
+}
+
+.accent-line {
+    width: 24px;
+    height: 1px;
+    background-color: var(--text-primary);
+    opacity: 0.2;
+    margin-bottom: var(--space-md);
 }
 
 h2 {
@@ -317,11 +350,13 @@ footer {
     
     /* Force consistent stacking order on mobile: Visual Top, Content Bottom */
     .grid { display: flex; flex-direction: column; text-align: center; gap: var(--space-lg); }
-    .content { order: 2; }
+    .content { order: 2; display: flex; flex-direction: column; align-items: center; }
     .visual { order: 1; height: 240px; width: 100%; }
     
     .product-section { padding: 100px 0; }
-    .product-label { margin-left: auto; margin-right: auto; }
+    .section-watermark { font-size: 200px; top: 10%; transform: none; left: 50% !important; transform: translateX(-50%); opacity: 0.03; }
+    .product-label { margin-left: auto; margin-right: auto; margin-bottom: var(--space-sm); }
+    .accent-line { margin-bottom: var(--space-sm); }
     .oria-shape { width: 120px; height: 120px; }
     .lamina-shape span { width: 90px; gap: 12px; }
     .keepass-shape { width: 70px; height: 70px; }
