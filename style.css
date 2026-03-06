@@ -10,7 +10,11 @@
     --logo-vequal: rgba(29, 29, 31, 0.7);
     --logo-ia: rgba(29, 29, 31, 1);
     --shape-color: #1d1d1f;
-    --shape-glow: rgba(0, 0, 0, 0.03);
+    --shape-glow: rgba(0, 113, 227, 0.04); /* Subtle brand blue glow for light mode */
+    --timeline-dot: #0D0F14;
+    --op-base: 0.18;      /* Higher opacity for light mode visibility */
+    --op-muted: 0.1;
+    --op-faint: 0.05;
 
     /* Typography */
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -39,6 +43,10 @@
         --logo-ia: rgba(245, 245, 247, 1);
         --shape-color: #F5F5F7;
         --shape-glow: rgba(255, 255, 255, 0.05);
+        --timeline-dot: #FAF9F6;
+        --op-base: 0.12;     /* Softer opacity for dark mode glow */
+        --op-muted: 0.07;
+        --op-faint: 0.03;
     }
 }
 
@@ -132,6 +140,26 @@ body {
 
 .nav-links a:hover {
     opacity: 1;
+}
+
+.nav-cta {
+    margin-left: var(--space-md);
+}
+
+.btn-demo {
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.btn-demo:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
 }
 
 /* Hero */
@@ -260,6 +288,43 @@ h2 {
     color: var(--text-primary);
 }
 
+.product-timeline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: var(--space-sm);
+    opacity: 0.6;
+}
+
+.timeline-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--timeline-dot);
+    border-radius: 50%;
+    position: relative;
+}
+
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border: 1px solid var(--timeline-dot);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite ease-out;
+}
+
+.timeline-text {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+@keyframes pulse-dot {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
 /* Geometric Visuals */
 .visual {
     position: relative;
@@ -284,13 +349,14 @@ h2 {
     position: absolute;
     border: 1px solid var(--shape-color);
     border-radius: 50%;
-    opacity: 0.1;
+    opacity: var(--op-base);
+    box-shadow: 0 0 20px var(--shape-glow); /* Enhanced glow for light mode support */
     animation: breathing 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .ring-1 { width: 100px; height: 100px; animation-delay: 0s; }
-.ring-2 { width: 180px; height: 180px; animation-delay: 0.6s; opacity: 0.06; }
-.ring-3 { width: 260px; height: 260px; animation-delay: 1.2s; opacity: 0.03; }
+.ring-2 { width: 180px; height: 180px; animation-delay: 0.6s; opacity: var(--op-muted); }
+.ring-3 { width: 260px; height: 260px; animation-delay: 1.2s; opacity: var(--op-faint); }
 
 /* Lamina - Data Spectrum & Grid */
 .lamina-canvas {
@@ -308,7 +374,7 @@ h2 {
     height: 100%;
     border-left: 1px solid var(--shape-color);
     border-right: 1px solid var(--shape-color);
-    opacity: 0.03;
+    opacity: var(--op-faint);
 }
 
 .lamina-lines {
@@ -320,7 +386,7 @@ h2 {
 .lamina-lines span {
     height: 1px;
     background-color: var(--shape-color);
-    opacity: 0.08;
+    opacity: var(--op-muted);
     animation: scan 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -346,7 +412,7 @@ h2 {
     height: 160px;
     border: 1px solid var(--shape-color);
     transform: rotate(15deg);
-    opacity: 0.04;
+    opacity: var(--op-faint);
     animation: lock-rotate 40s linear infinite reverse;
 }
 
@@ -355,17 +421,17 @@ h2 {
     height: 80px;
     border: 1.5px solid var(--shape-color);
     transform: rotate(45deg);
-    opacity: 0.15;
+    opacity: var(--op-base);
     animation: lock-rotate 25s linear infinite;
 }
 
 @keyframes breathing {
-    0%, 100% { transform: scale(0.95); opacity: 0.03; }
-    50% { transform: scale(1.05); opacity: 0.1; }
+    0%, 100% { transform: scale(0.95); opacity: var(--op-faint); }
+    50% { transform: scale(1.05); opacity: var(--op-base); }
 }
 
 @keyframes scan {
-    0%, 100% { opacity: 0.04; transform: translateX(-10px); }
+    0%, 100% { opacity: var(--op-faint); transform: translateX(-10px); }
     50% { opacity: 0.25; transform: translateX(10px); }
 }
 
@@ -411,8 +477,10 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .navbar .container { padding: 0 20px; }
-    .nav-links { gap: 20px; }
+    .navbar .container { padding: 0 16px; }
+    .nav-links { display: none; } /* Hide text links on very small screens to prioritize Logo and CTA */
+    .nav-cta { margin-left: auto; }
+    .btn-demo { font-size: 11px; padding: 6px 12px; }
     .hero { min-height: 75vh; padding: 100px 0 60px; }
     h1 { font-size: 44px; }
     h2 { font-size: 40px; }

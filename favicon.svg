@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
     <linearGradient id="darkGlow" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1B1F2B" />
+      <stop offset="0%" stop-color="#0D0F14" />
       <stop offset="100%" stop-color="#3E465E" />
     </linearGradient>
   </defs>
@@ -9,6 +9,6 @@
   <!-- Humanistic Starlight/Off-white Background -->
   <rect width="100" height="100" rx="24" fill="#FAF9F6"/>
 
-  <!-- The Ascending 'A' (IA) filling the container with deep brand gradient -->
+  <!-- The Ascending 'A' (IA) filling the container with obsidian brand gradient -->
   <path d="M 24 76 L 50 24 L 76 76" fill="none" stroke="url(#darkGlow)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
