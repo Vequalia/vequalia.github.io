@@ -1,0 +1,31 @@
+---
+const { lang = 'en' } = Astro.props;
+
+const translations = {
+  en: {
+    slogan: "Elegance in Every Vector.",
+    copyright: "Copyright &copy; 2026 Vequalia Llc. All rights reserved."
+  },
+  zh: {
+    slogan: "萬物皆數，靈魂有根。",
+    copyright: "© 2026 Vequalia Llc. 保留所有權利。"
+  },
+  sc: {
+    slogan: "万物皆数，灵魂有根。",
+    copyright: "© 2026 Vequalia Llc. 保留所有权利。"
+  },
+  fr: {
+    slogan: "L'âme dans la mesure, l'élégance dans le vecteur.",
+    copyright: "© 2026 Vequalia Llc. Tous droits réservés."
+  }
+};
+
+const t = translations[lang] || translations.en;
+---
+
+<footer class="footer reveal">
+    <div class="container">
+        <p class="footer-slogan">{t.slogan}</p>
+        <p class="footer-copyright" set:html={t.copyright}></p>
+    </div>
+</footer>

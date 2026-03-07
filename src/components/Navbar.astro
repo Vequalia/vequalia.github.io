@@ -1,0 +1,67 @@
+---
+const { lang = 'en' } = Astro.props;
+
+const translations = {
+  en: {
+    about: "About",
+    oria: "Oria",
+    lamina: "Lamina",
+    keepass: "KeePass",
+    demo: "Request a Demo",
+    langName: "English"
+  },
+  zh: {
+    about: "關於",
+    oria: "Oria",
+    lamina: "Lamina",
+    keepass: "KeePass",
+    demo: "預約演示",
+    langName: "繁體中文"
+  },
+  sc: {
+    about: "关于",
+    oria: "Oria",
+    lamina: "Lamina",
+    keepass: "KeePass",
+    demo: "预约演示",
+    langName: "简体中文"
+  },
+  fr: {
+    about: "À Propos",
+    oria: "Oria",
+    lamina: "Lamina",
+    keepass: "KeePass",
+    demo: "Expérimenter la Démo",
+    langName: "Français"
+  }
+};
+
+const t = translations[lang] || translations.en;
+
+// 根據當前語言生成基礎路徑
+const base = lang === 'en' ? '' : `/${lang}`;
+---
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">VEQUAL<span>IA</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">{t.about}</a></li>
+            <li><a href="#oria">{t.oria}</a></li>
+            <li><a href="#lamina">{t.lamina}</a></li>
+            <li><a href="#keepass">{t.keepass}</a></li>
+        </ul>
+        <div class="nav-cta">
+            <div class="lang-switcher">
+                <button id="lang-btn" class="btn-lang">{t.langName}</button>
+                <ul class="lang-dropdown">
+                    <li><a href="/">English</a></li>
+                    <li><a href="/zh/">繁體中文</a></li>
+                    <li><a href="/sc/">简体中文</a></li>
+                    <li><a href="/fr/">Français</a></li>
+                </ul>
+            </div>
+            <a href="mailto:contact@vequalia.com?subject=Demo Request - Vequalia" class="btn-demo">{t.demo}</a>
+        </div>
+    </div>
+</nav>

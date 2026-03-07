@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const lang = 'en';
+---
+
+<Layout title="Vequalia - Coming Soon" lang={lang}>
+	<Navbar lang={lang} />
+
+	<header class="hero" id="about">
+		<div class="container hero-content animate-fade-up">
+			<h1>Intelligence for <br><span class="italic-serif typewriter-text">A Better Self</span></h1>
+			<p class="subtitle delay-1">We craft AI not to replace humanity, but to refine it. Purpose-built tools to focus your mind, grow your prosperity, and protect your truth.</p>
+		</div>
+	</header>
+
+	<main>
+		<section id="oria" class="product-section alternate">
+			<div class="container grid">
+				<div class="content reveal">
+					<span class="product-label">"Attention is the rarest and purest form of generosity."</span>
+					<div class="accent-line"></div>
+					<h2 class="reveal title-wipe">Oria</h2>
+					<div class="product-timeline">
+						<span class="timeline-dot"></span>
+						<span class="timeline-text">Scheduled H2 2026</span>
+					</div>
+				</div>
+				<div class="visual reveal">
+					<div class="oria-canvas">
+						<div class="oria-shape ring-1"></div>
+						<div class="oria-shape ring-2"></div>
+						<div class="oria-shape ring-3"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="lamina" class="product-section">
+			<div class="container grid">
+				<div class="visual reveal">
+					<div class="lamina-canvas">
+						<div class="lamina-grid"></div>
+						<div class="lamina-lines">
+							<span></span><span></span><span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+				<div class="content reveal">
+					<span class="product-label">"Nature is written in the language of mathematics."</span>
+					<div class="accent-line"></div>
+					<h2 class="reveal title-wipe">Lamina</h2>
+					<div class="product-timeline">
+						<span class="timeline-dot"></span>
+						<span class="timeline-text">Scheduled H2 2026</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="keepass" class="product-section alternate">
+			<div class="container grid">
+				<div class="content reveal">
+					<span class="product-label">"Privacy is the power to selectively reveal oneself."</span>
+					<div class="accent-line"></div>
+					<h2 class="reveal title-wipe">KeePass</h2>
+					<div class="product-timeline">
+						<span class="timeline-dot"></span>
+						<span class="timeline-text">Scheduled H1 2027</span>
+					</div>
+				</div>
+				<div class="visual reveal">
+					<div class="keepass-canvas">
+						<div class="keepass-outer"></div>
+						<div class="keepass-shape"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer lang={lang} />
+</Layout>

@@ -1,0 +1,40 @@
+---
+interface Props {
+	title: string;
+	lang?: string;
+}
+
+const { title, lang = "en" } = Astro.props;
+
+// 像素級還原各語言對應的 Google Fonts 子集和字重
+// 增加 Noto Serif TC/SC 的 400 和 500 字重，確保「淬煉本真」更有力量感
+const fontLinks = {
+  // 繁體版 (zh)
+  zh: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&family=Noto+Sans+TC:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500&text=VEQUALIA智啟靈犀，淬鍊本真關於預約演示我們研發人工智慧，非為取代而在於昇華。透過精確設計的工具，助您澄明思緒、共築繁盛、守護真我之境。「專注，是生命對世界最純粹的禮讚。」預計於2026年下半年啟航2027年上半年問世萬象之本，皆由數理筆就。隱私，是守護靈魂邊界的力量。物有根保留所有權利©、。&display=swap",
+  // 簡體版 (sc)
+  sc: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500&text=VEQUALIA智启灵犀，淬炼本真关于预约演示我们研发人工智能，非为取代而在於升华。通过精确设计的工具，助您澄明思绪、共筑繁盛、守护真我之境。“专注，是生命对世界最纯粹的礼赞。”预计于2026年下半年启航2027年上半年问世万象之本，皆由数理笔就。隐私，是守护灵魂边界的力量。物有根保留所有权利©、。&display=swap",
+  // 英文/法文 (en/fr)
+  en: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&display=swap",
+  fr: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&display=swap"
+};
+
+const currentFontLink = fontLinks[lang] || fontLinks.en;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href={currentFontLink} rel="stylesheet" />
+	</head>
+	<body>
+		<slot />
+		<script is:inline src="/main.js"></script>
+	</body>
+</html>
