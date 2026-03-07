@@ -8,31 +8,37 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600&family=Playfair+Display:ital@1&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="logo">VEQUAL<span>IA</span></div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#oria">Oria</a></li>
-                <li><a href="#lamina">Lamina</a></li>
-                <li><a href="#keepass">KeePass</a></li>
+                <li><a href="#about" data-i18n="nav-about">About</a></li>
+                <li><a href="#oria" data-i18n="nav-oria">Oria</a></li>
+                <li><a href="#lamina" data-i18n="nav-lamina">Lamina</a></li>
+                <li><a href="#keepass" data-i18n="nav-keepass">KeePass</a></li>
             </ul>
             <div class="nav-cta">
-                <a href="mailto:contact@vequalia.com?subject=Demo Request - Vequalia" class="btn-demo">Request a Demo</a>
+                <div class="lang-switcher">
+                    <button id="lang-btn" class="btn-lang">EN</button>
+                    <ul class="lang-dropdown">
+                        <li data-lang="en">English</li>
+                        <li data-lang="zh">繁體中文</li>
+                        <li data-lang="zh-CN">简体中文</li>
+                        <li data-lang="fr">Français</li>
+                    </ul>
+                </div>
+                <a href="mailto:contact@vequalia.com?subject=Demo Request - Vequalia" class="btn-demo" data-i18n="nav-demo">Request a Demo</a>
             </div>
         </div>
     </nav>
 
     <header class="hero" id="about">
         <div class="container hero-content animate-fade-up">
-            <h1>Intelligence for <br><span class="italic-serif">A Better Self</span></h1>
-            <p class="subtitle animate-fade-up delay-1">We craft AI not to replace humanity, but to refine it. Purpose-built tools to focus your mind, grow your prosperity, and protect your truth.</p>
-            <div class="hero-badge animate-fade-up delay-2">
-                <span class="badge-capsule">Coming Soon</span>
-            </div>
+            <h1><span data-i18n="hero-title-prefix">Intelligence for</span> <br><span class="italic-serif typewriter-text" data-i18n="hero-title-suffix">A Better Self</span></h1>
+            <p class="subtitle delay-1" data-i18n="hero-subtitle">We craft AI not to replace humanity, but to refine it. Purpose-built tools to focus your mind, grow your prosperity, and protect your truth.</p>
         </div>
     </header>
 
@@ -40,16 +46,16 @@
         <section id="oria" class="product-section alternate">
             <div class="section-watermark">01</div>
             <div class="container grid">
-                <div class="content">
-                    <span class="product-label">"Attention is the rarest and purest form of generosity."</span>
+                <div class="content reveal">
+                    <span class="product-label" data-i18n="oria-quote">"Attention is the rarest and purest form of generosity."</span>
                     <div class="accent-line"></div>
-                    <h2>Oria</h2>
+                    <h2 class="reveal title-wipe">Oria</h2>
                     <div class="product-timeline">
                         <span class="timeline-dot"></span>
-                        <span class="timeline-text">Available H2 2026</span>
+                        <span class="timeline-text" data-i18n="oria-status">Scheduled H2 2026</span>
                     </div>
                 </div>
-                <div class="visual">
+                <div class="visual reveal">
                     <div class="oria-canvas">
                         <div class="oria-shape ring-1"></div>
                         <div class="oria-shape ring-2"></div>
@@ -62,7 +68,7 @@
         <section id="lamina" class="product-section">
             <div class="section-watermark">02</div>
             <div class="container grid">
-                <div class="visual">
+                <div class="visual reveal">
                     <div class="lamina-canvas">
                         <div class="lamina-grid"></div>
                         <div class="lamina-lines">
@@ -70,13 +76,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="content">
-                    <span class="product-label">"Nature is written in the language of mathematics."</span>
+                <div class="content reveal">
+                    <span class="product-label" data-i18n="lamina-quote">"Nature is written in the language of mathematics."</span>
                     <div class="accent-line"></div>
-                    <h2>Lamina</h2>
+                    <h2 class="reveal title-wipe">Lamina</h2>
                     <div class="product-timeline">
                         <span class="timeline-dot"></span>
-                        <span class="timeline-text">Available H2 2026</span>
+                        <span class="timeline-text" data-i18n="lamina-status">Scheduled H2 2026</span>
                     </div>
                 </div>
             </div>
@@ -85,16 +91,16 @@
         <section id="keepass" class="product-section alternate">
             <div class="section-watermark">03</div>
             <div class="container grid">
-                <div class="content">
-                    <span class="product-label">"Privacy is the power to selectively reveal oneself."</span>
+                <div class="content reveal">
+                    <span class="product-label" data-i18n="keepass-quote">"Privacy is the power to selectively reveal oneself."</span>
                     <div class="accent-line"></div>
-                    <h2>KeePass</h2>
+                    <h2 class="reveal title-wipe">KeePass</h2>
                     <div class="product-timeline">
                         <span class="timeline-dot"></span>
-                        <span class="timeline-text">Scheduled H1 2027</span>
+                        <span class="timeline-text" data-i18n="keepass-status">Scheduled H1 2027</span>
                     </div>
                 </div>
-                <div class="visual">
+                <div class="visual reveal">
                     <div class="keepass-canvas">
                         <div class="keepass-outer"></div>
                         <div class="keepass-shape"></div>
@@ -104,10 +110,12 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer reveal">
         <div class="container">
-            <p> Copyright &copy; 2026 Vequalia Llc. All rights reserved.</p>
+            <p class="footer-slogan" data-i18n="footer-slogan">Elegance in Every Vector.</p>
+            <p class="footer-copyright" data-i18n="footer-copyright">Copyright &copy; 2026 Vequalia Llc. All rights reserved.</p>
         </div>
     </footer>
+    <script src="main.js"></script>
 </body>
 </html>
