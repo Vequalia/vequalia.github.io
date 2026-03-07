@@ -662,20 +662,27 @@ html[lang="zh"] .footer-slogan, html[lang="zh-CN"] .footer-slogan {
 @media (max-width: 480px) {
     .navbar .container { 
         padding: 0 16px;
-        grid-template-columns: auto 1fr; /* Logo and CTA only */
-        gap: var(--space-sm);
+        display: flex; /* Switch to flex for absolute end-to-end positioning */
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
     .nav-links { display: none; }
     .nav-cta { 
-        justify-self: end;
-        gap: 8px; /* Tighter gap for small screens */
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
     .btn-lang {
-        min-width: 80px; /* Slimmer toggle for mobile */
+        min-width: 0; /* Let it shrink on tiny screens */
         padding: 6px 10px;
         font-size: 10px;
     }
-    .btn-demo { font-size: 10px; padding: 6px 10px; }
+    .btn-demo { 
+        font-size: 10px; 
+        padding: 6px 10px;
+        white-space: nowrap; /* Prevent wrapping */
+    }
     .hero { min-height: 75vh; padding: 100px 0 60px; }
     h1 { font-size: 44px; }
     h2 { font-size: 40px; }
