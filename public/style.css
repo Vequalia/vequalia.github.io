@@ -138,8 +138,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: 1rem;
-    flex-wrap: wrap; /* Critical for large font modes */
+    position: relative; /* Base for centered absolute nav-links */
 }
 
 .logo {
@@ -151,6 +150,7 @@ body {
     text-transform: uppercase;
     transition: color 0.5s ease;
     flex-shrink: 0;
+    z-index: 2;
 }
 
 .logo span {
@@ -162,8 +162,10 @@ body {
     display: flex;
     list-style: none;
     gap: var(--space-md);
-    justify-content: center;
-    flex-wrap: wrap; /* Wrap links if font is huge */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .nav-links a {
@@ -185,8 +187,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    z-index: 2;
 }
 
 .lang-switcher {
@@ -200,8 +201,6 @@ body {
     font-size: 0.6875rem; /* 11px */
     font-weight: 500;
     padding: 0.4rem 0.8rem;
-    min-width: 6.25rem; /* 100px */
-    justify-content: space-between;
     border-radius: 100px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -209,7 +208,7 @@ body {
     opacity: 0.7;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px; /* Tight spacing between text and arrow */
 }
 
 .btn-lang::after {
