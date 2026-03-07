@@ -10,11 +10,11 @@
     --logo-vequal: rgba(29, 29, 31, 0.7);
     --logo-ia: rgba(29, 29, 31, 1);
     --shape-color: #1d1d1f;
-    --shape-glow: rgba(0, 113, 227, 0.04); /* Subtle brand blue glow for light mode */
+    --shape-glow: rgba(0, 113, 227, 0.06); /* Slightly stronger glow */
     --timeline-dot: #0D0F14;
-    --op-base: 0.18;      /* Higher opacity for light mode visibility */
-    --op-muted: 0.1;
-    --op-faint: 0.05;
+    --op-base: 0.4;      /* Increased from 0.18 */
+    --op-muted: 0.25;    /* Increased from 0.1 */
+    --op-faint: 0.12;    /* Increased from 0.05 */
 
     /* Typography */
     --font-main: 'Inter', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'PingFang TC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Microsoft JhengHei', 'Noto Sans TC', 'Noto Sans SC', sans-serif;
@@ -42,11 +42,11 @@
         --logo-vequal: rgba(245, 245, 247, 0.7);
         --logo-ia: rgba(245, 245, 247, 1);
         --shape-color: #F5F5F7;
-        --shape-glow: rgba(255, 255, 255, 0.05);
+        --shape-glow: rgba(255, 255, 255, 0.08);
         --timeline-dot: #FAF9F6;
-        --op-base: 0.12;     /* Softer opacity for dark mode glow */
-        --op-muted: 0.07;
-        --op-faint: 0.03;
+        --op-base: 0.3;     /* Increased from 0.12 */
+        --op-muted: 0.18;    /* Increased from 0.07 */
+        --op-faint: 0.08;    /* Increased from 0.03 */
     }
 }
 
@@ -243,12 +243,21 @@ body {
 
 .lang-dropdown li {
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 0; /* Remove padding from li to let <a> fill it */
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s ease;
     color: var(--text-primary);
     white-space: nowrap;
+}
+
+.lang-dropdown li a {
+    display: block;
+    padding: 8px 12px;
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
 }
 
 .lang-dropdown li:hover {
@@ -390,32 +399,10 @@ h1 {
     transform: translateY(0);
 }
 
-/* Watermark & Visual Transitions */
-.section-watermark {
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    font-size: 400px;
-    font-weight: 600;
-    font-family: var(--font-main);
-    color: var(--text-primary);
-    opacity: 0.02;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-    line-height: 1;
-    will-change: transform;
-}
-
+/* Visual Transitions */
 [class$="-canvas"] {
     transition: opacity 0.8s ease-out;
     will-change: transform, opacity;
-}
-
-.product-section.alternate .section-watermark {
-    left: auto;
-    right: 5%;
 }
 
 .grid {
@@ -505,8 +492,8 @@ h2 {
 /* Oria Visuals */
 .oria-canvas {
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: 340px;
+    height: 340px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -514,22 +501,22 @@ h2 {
 
 .oria-shape {
     position: absolute;
-    border: 1px solid var(--shape-color);
+    border: 1.5px solid var(--shape-color); /* Slightly thicker line */
     border-radius: 50%;
     opacity: var(--op-base);
-    box-shadow: 0 0 20px var(--shape-glow);
+    box-shadow: 0 0 30px var(--shape-glow); /* Stronger glow */
     animation: breathing 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.ring-1 { width: 100px; height: 100px; animation-delay: 0s; }
-.ring-2 { width: 180px; height: 180px; animation-delay: 0.6s; opacity: var(--op-muted); }
-.ring-3 { width: 260px; height: 260px; animation-delay: 1.2s; opacity: var(--op-faint); }
+.ring-1 { width: 120px; height: 120px; animation-delay: 0s; }
+.ring-2 { width: 220px; height: 220px; animation-delay: 0.6s; opacity: var(--op-muted); }
+.ring-3 { width: 320px; height: 320px; animation-delay: 1.2s; opacity: var(--op-faint); }
 
 /* Lamina Visuals */
 .lamina-canvas {
     position: relative;
-    width: 240px;
-    height: 160px;
+    width: 320px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -539,35 +526,35 @@ h2 {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-left: 1px solid var(--shape-color);
-    border-right: 1px solid var(--shape-color);
-    opacity: var(--op-faint);
+    border-left: 1.5px solid var(--shape-color);
+    border-right: 1.5px solid var(--shape-color);
+    opacity: var(--op-muted); /* Increased from faint */
 }
 
 .lamina-lines {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px; /* More spacing */
 }
 
 .lamina-lines span {
-    height: 1px;
+    height: 1.5px; /* Thicker line */
     background-color: var(--shape-color);
-    opacity: var(--op-muted);
+    opacity: var(--op-base); /* Increased from muted */
     animation: scan 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.lamina-lines span:nth-child(1) { width: 140px; animation-delay: 0s; }
-.lamina-lines span:nth-child(2) { width: 200px; animation-delay: 0.4s; }
-.lamina-lines span:nth-child(3) { width: 160px; animation-delay: 0.8s; }
-.lamina-lines span:nth-child(4) { width: 180px; animation-delay: 1.2s; }
-.lamina-lines span:nth-child(5) { width: 120px; animation-delay: 1.6s; }
+.lamina-lines span:nth-child(1) { width: 180px; animation-delay: 0s; }
+.lamina-lines span:nth-child(2) { width: 260px; animation-delay: 0.4s; }
+.lamina-lines span:nth-child(3) { width: 220px; animation-delay: 0.8s; }
+.lamina-lines span:nth-child(4) { width: 240px; animation-delay: 1.2s; }
+.lamina-lines span:nth-child(5) { width: 160px; animation-delay: 1.6s; }
 
 /* KeePass Visuals */
 .keepass-canvas {
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -575,18 +562,18 @@ h2 {
 
 .keepass-outer {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    border: 1px solid var(--shape-color);
+    width: 200px;
+    height: 200px;
+    border: 1.5px solid var(--shape-color);
     transform: rotate(15deg);
-    opacity: var(--op-faint);
+    opacity: var(--op-muted); /* Increased from faint */
     animation: lock-rotate 40s linear infinite reverse;
 }
 
 .keepass-shape {
-    width: 80px;
-    height: 80px;
-    border: 1.5px solid var(--shape-color);
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--shape-color); /* Thicker line */
     transform: rotate(45deg);
     opacity: var(--op-base);
     animation: lock-rotate 25s linear infinite;
@@ -654,14 +641,6 @@ html[lang="zh"] .footer-slogan, html[lang="zh-CN"] .footer-slogan {
     .visual { order: 1; height: 240px; width: 100%; }
     
     .product-section { padding: 100px 0; }
-    .section-watermark, .product-section.alternate .section-watermark { 
-        font-size: 200px; 
-        top: 65%; 
-        left: 50% !important; 
-        right: auto !important; 
-        transform: translate(-50%, -50%); 
-        opacity: 0.03; 
-    }
     .product-label { margin-left: auto; margin-right: auto; margin-bottom: var(--space-sm); }
     .accent-line { margin-bottom: var(--space-sm); }
 }
