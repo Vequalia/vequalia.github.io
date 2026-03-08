@@ -152,7 +152,10 @@ const t = translations[lang] || translations.en;
     font-weight: 500;
   }
 
-  .form-message.success { color: var(--accent); }
+  .form-message.success { 
+    color: var(--text-primary); 
+    opacity: 0.8;
+  }
   .form-message.error { color: #ff3b30; }
 
   @media (max-width: 480px) {
