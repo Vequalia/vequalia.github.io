@@ -7,10 +7,9 @@ interface Props {
 const { title, lang = "en" } = Astro.props;
 
 // 定義不同語言對應的優化字體鏈接
-// 這裡的 text 參數是從原始 v1.0 版本的 HTML 中精確提取並補全的
 const fontLinks = {
-  zh: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&family=Noto+Sans+TC:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500&text=VEQUALIA智啟靈犀，淬鍊本真關於預約演示我們研發人工智慧，非為取代而在於昇華。透過精確設計的工具，助您澄明思緒、共築繁盛、守護真我之境。「專注，是生命對世界最純粹的禮讚。」將於2026年下半年推出2027年上半年物有根保留所有權利©、。&display=swap",
-  sc: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500&text=VEQUALIA智启灵犀，淬炼本真关于预约演示我们研发人工智能，非为取代而在於升华。通过精确设计的工具，助您澄明思绪、共筑繁盛、守护真我之境。“专注，是生命对世界最纯粹的礼赞。”将于2026年下半年推出2027年上半年物有根保留所有权利©、。&display=swap",
+  zh: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&family=Noto+Sans+TC:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500&text=VEQUALIAOriaLaminaKeePass01267©、。「」万上下世中之于人代体保們共关具出利前力助半取命啟在基境守將專對就工年徑思您慧成我所推據数數文於昇明是智最有本权根權注淬演澄灵為煉物犀理生由界留當發的皆盛真研確礎示禮私筆简築粹精約純緒繁约而華萬言計設語護讚象路透過邊量關隱靈非預预體魂，&display=swap",
+  sc: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500&text=VEQUALIAOriaLaminaKeePass01267©“”、。万上下专世中为之于人代们体保共关具出利前力助升半华发取启命在基境守对将就工年徑思您成我所护推據数數文於明是智最有本权根權注淬演澄灵炼物犀理生由界留當的皆盛真研确礎示礼私笔筑简粹精約繁约纯绪而能萬言語计设象赞路边过通量關隐靈非預预體魂，&display=swap",
   en: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&display=swap",
   fr: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lexend:wght@500&family=Playfair+Display:ital@1&display=swap"
 };
