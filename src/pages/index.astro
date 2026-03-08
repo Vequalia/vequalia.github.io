@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 
 const lang = 'en';
 ---
@@ -27,6 +28,7 @@ const lang = 'en';
 						<span class="timeline-dot"></span>
 						<span class="timeline-text">Scheduled H2 2026</span>
 					</div>
+					<EmailCapture lang={lang} />
 				</div>
 				<div class="visual reveal">
 					<div class="oria-canvas">

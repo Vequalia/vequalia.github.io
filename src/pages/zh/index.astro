@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
 
 const lang = 'zh';
 ---
@@ -27,6 +28,7 @@ const lang = 'zh';
 						<span class="timeline-dot"></span>
 						<span class="timeline-text">將於 2026 年下半年 推出</span>
 					</div>
+					<EmailCapture lang={lang} />
 				</div>
 				<div class="visual reveal">
 					<div class="oria-canvas">
