@@ -3,33 +3,34 @@ const { lang = 'en' } = Astro.props;
 
 const translations = {
   en: {
-    initial: "Request Early Access",
+    initial: "Reserve Early Access",
     placeholder: "Your email address",
     submit: "Join Waitlist",
-    success: "Thank you. We will be in touch.",
+    success: "You are on the list. We look forward to welcoming you soon.",
     error: "Something went wrong. Please try again."
   },
   zh: {
-    initial: "預約早期演示",
+    initial: "預約早期體驗",
     placeholder: "請輸入您的 Email 地址",
-    submit: "加入候補名單",
-    success: "感謝關注。我們將與您聯繫。",
+    submit: "加入內測名單",
+    success: "預約已確認。期待不久後與您共同開啟這段旅程。",
     error: "發生錯誤，請稍後再試。"
   },
   sc: {
-    initial: "预约早期演示",
+    initial: "预约早期体验",
     placeholder: "请输入您的 Email 地址",
-    submit: "加入候补名单",
-    success: "感谢关注。我们将与您联系。",
+    submit: "加入内测名单",
+    success: "预约已确认。期待不久后与您共同开启这段旅程。",
     error: "发生错误，请稍后再试。"
   },
   fr: {
-    initial: "Demander un accès anticipé",
+    initial: "Réserver l'accès anticipé",
     placeholder: "Votre adresse e-mail",
-    submit: "Rejoindre la liste",
-    success: "Merci. Nous vous contacterons.",
+    submit: "Rejoindre la bêta",
+    success: "Votre place est réservée. Nous avons hâte de vous accueillir bientôt.",
     error: "Une erreur est survenue. Veuillez réessayer."
   }
+
 };
 
 const t = translations[lang] || translations.en;
@@ -117,32 +118,33 @@ const t = translations[lang] || translations.en;
 
   .input-group:focus-within {
     border-color: var(--text-primary);
-    box-shadow: 0 0 0 3px var(--shape-glow);
   }
 
   .email-input {
     flex: 1;
     background: transparent;
     border: none;
-    padding: 0 12px; /* Reduced from 16px */
-    font-size: 0.8125rem; /* Reduced from 0.875rem */
+    padding: 0 12px;
+    font-size: 0.8125rem;
     color: var(--text-primary);
     font-family: var(--font-main);
     outline: none;
     width: 100%;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .submit-btn {
     background: var(--text-primary);
     color: var(--bg-color);
     border: none;
-    padding: 6px 14px; /* Reduced from 8px 18px */
+    padding: 6px 14px;
     border-radius: 100px;
-    font-size: 0.6875rem; /* Reduced from 0.75rem */
+    font-size: 0.6875rem;
     font-weight: 600;
     cursor: pointer;
     transition: opacity 0.3s ease;
     white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .form-message {
@@ -170,10 +172,23 @@ const t = translations[lang] || translations.en;
     .email-input {
       background: var(--bg-alt);
       border: 1px solid var(--border-color);
-      padding: 12px 20px;
+      padding: 14px 20px;
       border-radius: 100px;
+      font-size: 16px; /* Prevent iOS auto-zoom */
     }
-    .submit-btn { padding: 12px; }
+    .submit-btn { 
+      padding: 14px;
+      font-size: 14px;
+    }
+    
+    .input-group:focus-within {
+      box-shadow: none; /* Remove potential distracting shadow on mobile */
+    }
+    
+    .email-input:focus {
+      border-color: var(--text-primary);
+      outline: none;
+    }
   }
 
   /* After submission hide inputs */

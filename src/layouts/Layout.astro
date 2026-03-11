@@ -2,9 +2,18 @@
 interface Props {
 	title: string;
 	lang?: string;
+	description?: string;
+	image?: string;
+	canonicalURL?: string;
 }
 
-const { title, lang = "en" } = Astro.props;
+const { 
+	title, 
+	lang = "en", 
+	description = "Vequalia - Intelligence for A Better Self. We craft AI tools to focus your mind, grow your prosperity, and protect your truth.",
+	image = "/favicon.svg",
+	canonicalURL = Astro.url.href
+} = Astro.props;
 
 // 定義不同語言對應的優化字體鏈接
 const fontLinks = {
@@ -15,6 +24,27 @@ const fontLinks = {
 };
 
 const currentFontLink = fontLinks[lang] || fontLinks.en;
+
+// 構建語言交替鏈接
+const languages = ['en', 'zh', 'sc', 'fr'];
+const siteUrl = "https://vequalia.com"; // 請確保這是您的正式網址
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Vequalia",
+  "alternateName": "Vequalia AI",
+  "url": siteUrl,
+  "description": description
+};
+
+const organizationData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Vequalia",
+  "url": siteUrl,
+  "logo": siteUrl + "/favicon.svg"
+};
 ---
 
 <!doctype html>
@@ -22,12 +52,48 @@ const currentFontLink = fontLinks[lang] || fontLinks.en;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{title}</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, siteUrl)} />
+		<meta property="og:site_name" content="Vequalia" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, siteUrl)} />
+
+		<!-- Language Alternates -->
+		<link rel="alternate" hreflang="en" href={`${siteUrl}/`} />
+		<link rel="alternate" hreflang="zh-Hant" href={`${siteUrl}/zh/`} />
+		<link rel="alternate" hreflang="zh-Hans" href={`${siteUrl}/sc/`} />
+		<link rel="alternate" hreflang="fr" href={`${siteUrl}/fr/`} />
+		<link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+
 		<link rel="stylesheet" href="/style.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href={currentFontLink} rel="stylesheet" />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+		<script type="application/ld+json" set:html={JSON.stringify(organizationData)} />
+
+		<!-- Cloudflare Web Analytics -->
+		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5cd8749930ec4d58955b8546a088cf8a"}'></script>
+		<!-- End Cloudflare Web Analytics -->
 	</head>
 	<body>
 		<slot />
